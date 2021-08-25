@@ -106,77 +106,14 @@ fi
 baseband=`getprop ro.baseband`
 
 echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
-usb_config=`getprop persist.sys.usb.config`
-debuggable=`getprop ro.debuggable`
-case "$usb_config" in
-    "" | "adb" | "none") #USB persist config not set, select default configuration
-      case "$esoc_link" in
-          "PCIe")
-              setprop persist.sys.usb.config diag,diag_mdm,serial_cdev,rmnet_qti_ether,mass_storage,adb
-          ;;
-          *)
-	  case "$baseband" in
-	      "apq")
-	          setprop persist.sys.usb.config diag,adb
-	      ;;
-	      *)
-	      case "$soc_hwplatform" in
-	          "Dragon" | "SBC")
-	              setprop persist.sys.usb.config diag,adb
-	          ;;
-                  *)
-	          case "$target" in
-                      "msm8916")
-		          setprop persist.sys.usb.config diag,serial_smd,rmnet_bam,adb
-		      ;;
-	              "msm8994" | "msm8992")
-	                  setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_ipa,mass_storage,adb
-		      ;;
-	              "msm8996")
-	                  setprop persist.sys.usb.config diag,serial_cdev,serial_tty,rmnet_ipa,mass_storage,adb
-		      ;;
-	              "msm8909")
-		          setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
-		      ;;
-	              "msm8937")
-			    case "$soc_id" in
-				    "313" | "320")
-				       #setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
-                                       if [ -z "$debuggable" -o "$debuggable" = "1" ]; then
-                                           setprop persist.sys.usb.config mtp,adb
-                                       else
-                                           setprop persist.sys.usb.config mtp
-                                       fi
-				    ;;
-				    *)
-				       #setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
-                                       if [ -z "$debuggable" -o "$debuggable" = "1" ]; then
-                                           setprop persist.sys.usb.config mtp,adb
-                                       else
-                                           setprop persist.sys.usb.config mtp
-                                       fi
-				    ;;
-			    esac
-		      ;;
-	              "msm8952" | "msm8953")
-		          setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
-		      ;;
-	              "msm8998")
-		          setprop persist.sys.usb.config diag,serial_cdev,rmnet_gsi,adb
-		      ;;
-	              *)
-		          setprop persist.sys.usb.config diag,adb
-		      ;;
-                  esac
-	          ;;
-	      esac
-	      ;;
-	  esac
-	  ;;
-      esac
-      ;;
-  * ) ;; #USB persist config exists, do nothing
-esac
+test_switch_info=`cat /persist/test_switch_info`
+if [ "$test_switch_info" = "0" ]; then
+  setprop persist.sys.usb.config none
+fi
+if [ "$test_switch_info" = "1" ]; then
+  setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
+fi
+
 
 # set USB controller's device node
 case "$target" in

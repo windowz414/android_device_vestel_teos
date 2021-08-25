@@ -20,8 +20,8 @@ set -e
 INITIAL_COPYRIGHT_YEAR=2017
 
 # Required!
-DEVICE=santoni
-VENDOR=xiaomi
+DEVICE=teos
+VENDOR=vestel
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

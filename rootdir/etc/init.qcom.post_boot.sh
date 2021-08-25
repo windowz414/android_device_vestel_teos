@@ -67,31 +67,31 @@ function configure_memory_parameters() {
     set_almk_ppr_adj=$(((set_almk_ppr_adj * 6) + 6))
     echo $set_almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
     echo $set_almk_ppr_adj > /sys/module/process_reclaim/parameters/min_score_adj
-    #echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
-    #echo 70 > /sys/module/process_reclaim/parameters/pressure_max
-    #echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
-    #echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+    echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
+    echo 70 > /sys/module/process_reclaim/parameters/pressure_max
+    echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
+    echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
     if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 2097152 ]; then
-        #echo 10 > /sys/module/process_reclaim/parameters/pressure_min
-        #echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
+        echo 10 > /sys/module/process_reclaim/parameters/pressure_min
+        echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
         echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
         adjZeroMinFree=18432
     elif [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 1048576 ]; then
-        #echo 10 > /sys/module/process_reclaim/parameters/pressure_min
-        #echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
+        echo 10 > /sys/module/process_reclaim/parameters/pressure_min
+        echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
         echo "14746,18432,22118,25805,40000,55000" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
         adjZeroMinFree=14746
     elif [ "$arch_type" == "aarch64" ]; then
-        #echo 50 > /sys/module/process_reclaim/parameters/pressure_min
-        #echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
+        echo 50 > /sys/module/process_reclaim/parameters/pressure_min
+        echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
         echo "14746,18432,22118,25805,40000,55000" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
         adjZeroMinFree=14746
     else
-        #echo 50 > /sys/module/process_reclaim/parameters/pressure_min
-        #echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
+        echo 50 > /sys/module/process_reclaim/parameters/pressure_min
+        echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
         echo "15360,19200,23040,26880,34415,43737" > /sys/module/lowmemorykiller/parameters/minfree
         echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
         adjZeroMinFree=15360
@@ -847,15 +847,15 @@ case "$target" in
                 # enable governor for perf cluster
                 echo 1 > /sys/devices/system/cpu/cpu0/online
                 echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-                echo "19000 1113600:39000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+                echo "19000 1094400:39000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
                 echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
                 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-                echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+                echo 1094400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-                echo "1 960000:85 1113600:90 1344000:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+                echo "1 998400:85 1094400:90 1344000:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
                 echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
                 echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
-                echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+                echo 998400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
                 # enable governor for power cluster
                 echo 1 > /sys/devices/system/cpu/cpu4/online
@@ -863,12 +863,12 @@ case "$target" in
                 echo 39000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
                 echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
                 echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
-                echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+                echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
-                echo "1 800000:90" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+                echo "1 806400:90" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
                 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
                 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/sampling_down_factor
-                echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+                echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
                 # re-enable thermal & BCL core_control now
                 echo 1 > /sys/module/msm_thermal/core_control/enabled
@@ -1147,18 +1147,17 @@ case "$target" in
         case "$soc_id" in
             "293" | "304" | "338" )
 
-                # Start Host based Touch processing
-                case "$hw_platform" in
-                     "MTP" | "Surf" | "RCM" )
-                        #if this directory is present, it means that a
-                        #1200p panel is connected to the device.
-                        dir="/sys/bus/i2c/devices/3-0038"
-#Bug159415 , zhangsan.libin, DEL, 2016.3.29
-#                        if [ ! -d "$dir" ]; then
-                             # start hbtp
-#                        fi
-                        ;;
-                esac
+                ## Start Host based Touch processing
+                #case "$hw_platform" in
+                #     "MTP" | "Surf" | "RCM" )
+                #        #if this directory is present, it means that a
+                #        #1200p panel is connected to the device.
+                #        dir="/sys/bus/i2c/devices/3-0038"
+                #        if [ ! -d "$dir" ]; then
+                #              start hbtp
+                #        fi
+                #        ;;
+                #esac
 
                 #scheduler settings
                 echo 3 > /proc/sys/kernel/sched_window_stats_policy
@@ -1363,13 +1362,23 @@ case "$target" in
             hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
 
+        if [ -f /sys/devices/soc0/platform_subtype_id ]; then
+            subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+        else
+            subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+        fi
+
+
         case "$soc_id" in
            "303" | "307" | "308" | "309" | "320" )
 
                   # Start Host based Touch processing
                   case "$hw_platform" in
                     "MTP" | "Surf" | "RCM" )
-                       # start hbtp
+			# Don't try to start non-existing service.
+			if [ "$subtype_id" != "208" ]; then		
+	                        start hbtp
+			fi
                         ;;
                   esac
                 # Apply Scheduler and Governor settings for 8917 / 8920
@@ -1482,7 +1491,10 @@ case "$target" in
                   # Start Host based Touch processing
                   case "$hw_platform" in
                     "MTP" | "Surf" | "RCM" )
-                        #start hbtp #Req-bug 164399,libin.wt, MODIFY , 20160413,close hbtp service
+			# Don't try to start non-existing service.
+			if [ "$subtype_id" != "176" ]; then
+	                        start hbtp
+			fi
                         ;;
                   esac
 
@@ -1583,13 +1595,6 @@ case "$target" in
                 echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/idle_enabled
                 echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/suspend_enabled
 
-                # Disable E3 low power modes
-                echo N > /sys/module/lpm_levels/system/system-pc/idle_enabled
-
-                # Disable CCI WFI and CCI RETENTION Low power modes
-                echo N > /sys/module/lpm_levels/system/system-wfi/idle_enabled
-                echo N > /sys/module/lpm_levels/system/system-ret/idle_enabled
-
                 # Bring up all cores online
                 echo 1 > /sys/devices/system/cpu/cpu1/online
                 echo 1 > /sys/devices/system/cpu/cpu2/online
@@ -1598,11 +1603,6 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpu5/online
                 echo 1 > /sys/devices/system/cpu/cpu6/online
                 echo 1 > /sys/devices/system/cpu/cpu7/online
-                # Disable L2-GDHS low power modes
-                echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/idle_enabled
-                echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/suspend_enabled
-                echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/idle_enabled
-                echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/suspend_enabled
 
                 # Enable low power modes
                 echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
@@ -1620,7 +1620,6 @@ case "$target" in
                 echo 50000 > /proc/sys/kernel/sched_freq_dec_notify
 
                 # Enable core control
-                insmod /system/lib/modules/core_ctl.ko
                 echo 2 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
                 echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/max_cpus
                 echo 68 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
@@ -2282,8 +2281,6 @@ case "$target" in
         echo 128 > /sys/block/dm-0/queue/read_ahead_kb
         echo 128 > /sys/block/dm-1/queue/read_ahead_kb
         setprop sys.post_boot.parsed 1
-		rm /data/system/perfd/default_values
-        start perfd
         start gamed
     ;;
     "msm8974")
