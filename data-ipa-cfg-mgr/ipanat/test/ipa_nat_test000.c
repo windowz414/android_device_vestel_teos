@@ -42,8 +42,11 @@
 #include "ipa_nat_test.h"
 #include "ipa_nat_drv.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameters"
 int ipa_nat_test000(int total_entries, u32 tbl_hdl, u8 sep)
 {
+#pragma GCC diagnostic pop
 
 	int ret;
 	u32 pub_ip_add = 0x011617c0;   /* "192.23.22.1" */
