@@ -1,6 +1,6 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/lineage.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_teos.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_teos-user \
-    lineage_teos-userdebug \
-    lineage_teos-eng
+    aosp_teos-user \
+    aosp_teos-userdebug \
+    aosp_teos-eng
