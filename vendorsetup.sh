@@ -30,6 +30,7 @@ then
     # And then write a simple configuration file for proper lunch
     echo "\$(call inherit-product, device/vestel/teos/aosp_teos.mk)" > vendor/pure/products/teos.mk
     sed -i 's/aosp\/common.mk/pure\/configs\/pure_phone.mk/' device/vestel/teos/aosp_teos.mk
+    sed -i 's/longPressOnHomeBehavior\">3/longPressOnHomeBehavior\">2/' device/vestel/teos/overlay/frameworks/base/core/res/res/values/config.xml
     add_lunch_combo aosp_teos-eng
     add_lunch_combo aosp_teos-userdebug
     add_lunch_combo teos-user
