@@ -24,10 +24,13 @@ fi
 
 if [[ -d vendor/pure ]]
 then
-    # Undefine custom audio policy to avoid missing libaudiopolicy
+    # First, add a missing GCC dependency for kernel to PATH
+    export PATH=$(gettop)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin:$PATH
+
+    # Then undefine custom audio policy to avoid missing libaudiopolicy
     sed -i 's/AUDIO_POLICY := 1/AUDIO_POLICY := 0/' device/vestel/teos/BoardConfig.mk
 
-    # And then write a simple configuration file for proper lunch
+    # And lastly, write a simple configuration file for proper lunch
     echo "\$(call inherit-product, device/vestel/teos/aosp_teos.mk)" > vendor/pure/products/teos.mk
     sed -i 's/aosp\/common.mk/pure\/configs\/pure_phone.mk/' device/vestel/teos/aosp_teos.mk
     sed -i 's/longPressOnHomeBehavior\">3/longPressOnHomeBehavior\">2/' device/vestel/teos/overlay/frameworks/base/core/res/res/values/config.xml
