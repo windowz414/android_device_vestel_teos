@@ -20,25 +20,20 @@ then
 fi
 #################
 
-##### Pure Nexus Project #####
 
-if [[ -d vendor/pure ]]
+##### AOSP-CAF #####
+
+# Patch vendor/aosp for sane build.
+if [[ -f vendor/aosp/common.mk ]]
 then
-    # First, add a missing GCC dependency for kernel to PATH
-    export PATH=$(gettop)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin:$PATH
-
-    # Then undefine custom audio policy to avoid missing libaudiopolicy
-    sed -i 's/AUDIO_POLICY := 1/AUDIO_POLICY := 0/' device/vestel/teos/BoardConfig.mk
-
-    # And lastly, write a simple configuration file for proper lunch
-    echo "\$(call inherit-product, device/vestel/teos/aosp_teos.mk)" > vendor/pure/products/teos.mk
-    sed -i 's/aosp\/common.mk/pure\/configs\/pure_phone.mk/' device/vestel/teos/aosp_teos.mk
-    sed -i 's/longPressOnHomeBehavior\">3/longPressOnHomeBehavior\">2/' device/vestel/teos/overlay/frameworks/base/core/res/res/values/config.xml
-    add_lunch_combo aosp_teos-eng
-    add_lunch_combo aosp_teos-userdebug
-    add_lunch_combo teos-user
-    echo ""
-    echo "To build Pure Nexus, you have to use aosp_teos-eng/userdebug or teos-user lunch combo."
-    echo "Open up lunch menu for possible combos."
-    echo ""
+    caftestvar="$(cat vendor/aosp/common.mk | grep ro.aosp-caf.version)"
+    if [[ ! -z caftestvar ]]
+    then
+        echo ""
+        echo "You're building AOSP-CAF, need to patch vendor/aosp for proper prop sets and apps..."
+        echo ""
+        python device/vestel/teos/patch_repo.py
+        echo ""
+    fi
 fi
+####################

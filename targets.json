@@ -1,0 +1,12 @@
+{
+    "target_github": "https://github.com/wz414-labs/",
+
+    "target_branch": "n-mr2",
+
+    "target_trees": [ ],
+
+    "target_commits": {
+            "platform_vendor_custom": [ "85c9e968378b1ba8d6c1752c0a7a9cd48811d4b8",
+                                        "629c9c124e01478cc7c88842d66f7571088e0dbe" ]
+    }
+}
