@@ -18,25 +18,25 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
 # Inherit some common Lineage stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit from land device
+# Inherit from teos device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 3S
-PRODUCT_DEVICE := land
-PRODUCT_MANUFACTURER := Wingtech
-PRODUCT_NAME := lineage_land
+PRODUCT_BRAND := Vestel
+PRODUCT_MODEL := Venus V5
+PRODUCT_DEVICE := teos
+PRODUCT_MANUFACTURER := Vestel
+PRODUCT_NAME := lineage_teos
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+PRODUCT_GMS_CLIENTID_BASE := android-vestel
 
-TARGET_VENDOR_PRODUCT_NAME := land
+TARGET_VENDOR_PRODUCT_NAME := Teos
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="land-user 6.0.1 MMB29M V9.6.1.0.MALMIFD release-keys"
+    PRIVATE_BUILD_DESC="Teos-user 7.1.2 VTE1190 131806 release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/land/land:6.0.1/MMB29M/V9.6.1.0.MALMIFD:user/release-keys
+BUILD_FINGERPRINT := vestel/Teos/Teos:7.1.2/VTE1190/131806:user/release-keys

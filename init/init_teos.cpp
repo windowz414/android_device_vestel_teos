@@ -68,7 +68,7 @@ static bool is3GBram() {
     return sys.totalram > 2048ull * 1024 * 1024;
 }
 
-static void import_kernel_cmdline_land(bool in_qemu,
+static void import_kernel_cmdline_teos(bool in_qemu,
                            const std::function<void(const std::string&, const std::string&, bool)>& fn) {
     std::string cmdline;
     android::base::ReadFileToString("/proc/cmdline", &cmdline);
@@ -115,23 +115,18 @@ static void set_ramconfig() {
 
 static void variant_properties() {
     std::string product = GetProperty("ro.product.name", "");
-    if (product.find("land") == std::string::npos)
+    if (product.find("teos") == std::string::npos)
         return;
 
     // Get board_id from cmdline
-    import_kernel_cmdline_land(false, parse_cmdline_boardid);
+    import_kernel_cmdline_teos(false, parse_cmdline_boardid);
 
     // Set board id
     property_set("ro.product.wt.boardid", board_id.c_str());
 
-    // Set variant based on board_id
-    if (board_id == "S88537AB1") {
-        property_override("ro.product.model", "Redmi 3X");
-        property_override("ro.vendor.product.device", "Redmi 3X");
-    } else {
-        property_override("ro.product.model", "Redmi 3S");
-        property_override("ro.vendor.product.device", "Redmi 3S");
-    }
+    // Set model and device
+    property_override("ro.product.model", "Venus V5");
+    property_override("ro.vendor.product.device", "Venus V5");
 }
 
 void vendor_load_properties() {

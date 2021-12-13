@@ -25,12 +25,7 @@ inline const char* BtmGetDefaultName()
 {
 	char board_id[PROPERTY_VALUE_MAX];
 	property_get("ro.product.wt.boardid", board_id, "");
-
-	if (!strcmp("S88537AB1", board_id)) {
-		return "Xiaomi Redmi 3X";
-	}
-
-	return "Xiaomi Redmi 3S";
+	return "Vestel Venus V5";
 }
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()

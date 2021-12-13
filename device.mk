@@ -212,9 +212,6 @@ PRODUCT_PACKAGES += \
     libgnsspps \
     libcurl
 
-PRODUCT_BOOT_JARS += \
-    com.qti.location.sdk
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
@@ -271,12 +268,6 @@ PRODUCT_PACKAGES += \
 # Libshims
 PRODUCT_PACKAGES += \
     libshim_pthreadts
-
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    lights.msm8937
 
 # IRQ
 PRODUCT_COPY_FILES += \

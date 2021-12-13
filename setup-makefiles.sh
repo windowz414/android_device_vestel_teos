@@ -19,11 +19,11 @@
 set -e
 
 # Initial copyright year
-export INITIAL_COPYRIGHT_YEAR=2016
+export INITIAL_COPYRIGHT_YEAR=2017
 
 # Required!
-DEVICE=land
-VENDOR=xiaomi
+DEVICE=teos
+VENDOR=vestel
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

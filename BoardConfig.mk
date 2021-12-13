@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/land
+DEVICE_PATH := device/vestel/teos
 
 # Architecture
 TARGET_ARCH 	    	:= arm64
@@ -40,21 +40,11 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME 	:= msm8937
+TARGET_BOOTLOADER_BOARD_NAME 	:= Teos_msm8920
 TARGET_NO_BOOTLOADER 		:= true
 
-# kernel
-BOARD_KERNEL_BASE		:= 0x80000000
-BOARD_KERNEL_CMDLINE 		:= androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
-BOARD_KERNEL_IMAGE_NAME 	:= Image.gz-dtb
-BOARD_KERNEL_PAGESIZE 		:=  2048
-BOARD_MKBOOTIMG_ARGS 		:= --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100
-TARGET_KERNEL_CONFIG 		:= land_defconfig
-TARGET_KERNEL_SOURCE 		:= kernel/xiaomi/msm8937
-TARGET_EXFAT_DRIVER		:= sdfat
-
 # ANT
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
@@ -117,7 +107,6 @@ USE_DEVICE_SPECIFIC_CAMERA   := true
 BOARD_QTI_CAMERA_32BIT_ONLY  := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_USES_QTI_CAMERA_DEVICE := true
-TARGET_TS_MAKEUP             := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -125,6 +114,11 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Clang
 INTERNAL_LOCAL_CLANG_EXCEPTION_PROJECTS += $(DEVICE_PATH)
+
+# LineageHW
+BOARD_USES_LINEAGE_HARDWARE := true
+BOARD_HARDWARE_CLASS += \
+    hardware/lineage/lineagehw
 
 # CNE / DPM
 BOARD_USES_QCNE := true
@@ -158,6 +152,8 @@ BOARD_HAVE_QCOM_FM                 := true
 TARGET_QCOM_NO_FM_FIRMWARE         := true
 
 # Filesystem
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # GPS
@@ -169,9 +165,9 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB         := libinit_land
+TARGET_INIT_VENDOR_LIB         := libinit_teos
 TARGET_PLATFORM_DEVICE_BASE    := /devices/soc/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_land
+TARGET_RECOVERY_DEVICE_MODULES := libinit_teos
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -186,17 +182,30 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 # Malloc
 MALLOC_SVELTE := true
 
+# Kernel
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/vestel/msm8920
+TARGET_KERNEL_CONFIG := teos_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+
 # Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE     := 67108864
-BOARD_CACHEIMAGE_PARTITION_SIZE    := 258998272
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 3119513600 
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 10365157376 #10365173760 - 16384 use the 16gb version
-BOARD_FLASH_BLOCK_SIZE 		   := 131072
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE  := ext4
-TARGET_USES_MKE2FS := true
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 25555055411
+BLOCK_BASED_OTA := true
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
@@ -205,7 +214,6 @@ TARGET_PER_MGR_ENABLED := true
 BOARD_USES_QCOM_HARDWARE := true
 
 # RIL
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_RIL_VARIANT := caf
 
 # Recovery
@@ -214,21 +222,26 @@ TARGET_RECOVERY_FSTAB 		 := $(DEVICE_PATH)/rootdir/fstab.qcom
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_KERMEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := /vendor/bin/mm-qcamera-daemon|libshim_pthreadts.so
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
+BOARD_HAS_QCOM_WLAN_SDK := true
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+HOSTAPD_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
--include vendor/xiaomi/land/BoardConfigVendor.mk
+-include vendor/vestel/teos/BoardConfigVendor.mk
