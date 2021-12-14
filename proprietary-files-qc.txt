@@ -36,13 +36,14 @@ vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # ANT+ - from bardockpro (BQ Aquarius X Pro)
 lib/com.qualcomm.qti.ant@1.0.so
--lib/libantradio.so
+lib/libantradio.so
 lib64/com.qualcomm.qti.ant@1.0.so
--lib64/libantradio.so
+lib64/libantradio.so
 vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
 vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+xbin/antradio_app
 
 # Audio - from bardockpro (BQ Aquarius X Pro)
 lib/libqct_resampler.so
