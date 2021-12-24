@@ -244,4 +244,4 @@ WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
--include vendor/vestel/teos/BoardConfigVendor.mk
+include vendor/vestel/teos/BoardConfigVendor.mk

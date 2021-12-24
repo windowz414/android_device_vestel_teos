@@ -1,10 +1,10 @@
 [
   {
-    "repository": "teos-dev/android_kernel_vestel_msm8920",
+    "repository": "windowz414/android_kernel_vestel_msm8920",
     "target_path": "kernel/vestel/msm8920"
   },
   {
-    "repository": "android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
+    "repository": "windowz414/android_vendor_vestel_teos",
+    "target_path": "vendor/vestel/teos"
   }
 ]
