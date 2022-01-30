@@ -36,6 +36,10 @@ TARGET_BOOT_ANIMATION_RES := 720
 ## Evervolv
 BOOT_ANIMATION_SIZE := 720p
 
+# QCOM hardware
+PRODUCT_BOARD_PLATFORM := msm8937
+PRODUCT_USES_QCOM_HARDWARE := true
+
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
