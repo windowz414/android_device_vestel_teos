@@ -1,6 +1,6 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_teos.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/XOS_teos.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_teos-user \
-    aosp_teos-userdebug \
-    aosp_teos-eng
+    XOS_teos-user \
+    XOS_teos-userdebug \
+    XOS_teos-eng

@@ -82,17 +82,21 @@
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
-    <!-- Control the behavior when the user long presses the home button.
+    <!-- Control the behavior when the user long presses the back button.  Non-zero values are only
+         valid for watches as part of CDD/CTS.
             0 - Nothing
-            1 - Menu key
-            2 - Recent apps view in SystemUI
-            3 - Launch assist intent
-            4 - Voice Search
-            5 - In-app Search
-         This needs to match the constants in
-         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+            1 - Go to voice assist
     -->
-    <integer name="config_longPressOnHomeBehavior">3</integer>
+    <integer name="config_longPressOnBackBehavior">1</integer>
+
+    <!-- Control the behavior when the user panic presses the back button.
+            0 - Nothing
+            1 - Go to home
+    -->
+    <integer name="config_backPanicBehavior">1</integer>
+
+    <!-- Indicate whether the SD card is accessible without removing the battery. -->
+    <bool name="config_batterySdCardAccessibility">true</bool>
 
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
@@ -212,6 +216,15 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
+    <!-- Control the behavior when the user long presses the home button.
+            0 - Nothing
+            1 - Recent apps view in SystemUI
+            2 - Launch assist intent
+         This needs to match the constants in
+         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+    -->
+    <integer name="config_longPressOnHomeBehavior">2</integer>
+
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
@@ -223,6 +236,17 @@
          provisioning, availability etc -->
     <bool name="config_carrier_volte_available">true</bool>
 
+    <!-- Flag specifying whether VoLTE availability is based on provisioning -->
+    <bool name="config_carrier_volte_provisioned">true</bool>
+
+    <!-- Flag specifying whether VT is available on device -->
+    <bool name="config_device_vt_available">true</bool>
+
+    <!-- Flag specifying whether VT should be available for carrier: independent of
+         carrier provisioning. If false: hard disabled. If true: then depends on carrier
+         provisioning, availability etc -->
+    <bool name="config_carrier_vt_available">true</bool>
+
     <!-- Config determines whether to update phone object when voice registration
          state changes. Voice radio tech change will always trigger an update of
          phone object irrespective of this config -->
@@ -230,12 +254,6 @@
 
     <!-- Flag indicating if the speed up audio on mt call code should be executed -->
     <bool name="config_speed_up_audio_on_mt_calls">true</bool>
-
-    <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-
-    <!-- Whether UI for multi user should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
 
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
@@ -317,11 +335,13 @@
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
 
-    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
     <!-- Flag specifying whether WFC over IMS is available on device -->
     <bool name="config_device_wfc_ims_available">true</bool>
+
+    <!-- Flag specifying whether WFC over IMS should be available for carrier: independent of
+         carrier provisioning. If false: hard disabled. If true: then depends on carrier
+         provisioning, availability etc -->
+    <bool name="config_carrier_wfc_ims_available">true</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -329,5 +349,43 @@
 
     <!-- Indicates whether round icons should be parsed from the application manifest. -->
     <bool name="config_useRoundIcon">true</bool>
+
+    <!-- Defines the default set of global actions. Actions may still be disabled or hidden based
+         on the current state of the device.
+         Each item must be one of the following strings:
+         "power" = Power off
+         "settings" = An action to launch settings
+         "airplane" = Airplane mode toggle
+         "bugreport" = Take bug report, if available
+         "silent" = silent mode
+         "users" = list of users
+         "restart" = restart device
+         -->
+    <string-array translatable="false" name="config_globalActionsList">
+        <item>power</item>
+        <item>restart</item>
+        <item>bugreport</item>
+    </string-array>
+
+    <!-- If true, the display will be shifted around in ambient mode. -->
+    <bool name="config_enableBurnInProtection">true</bool>
+
+    <!-- This config is ued to determine whether animations are allowed in low power mode. -->
+    <bool name="config_allowAnimationsInLowPowerMode">true</bool>
+
+    <!-- VoLTE Provisioned -->
+    <bool name="config_volte_preferred">true</bool>
+
+    <!-- Specifies whether the permissions needed by a legacy app should be
+         reviewed before any of its components can run. A legacy app is one
+         with targetSdkVersion < 23, i.e apps using the old permission model.
+         If review is not required, permissions are reviewed before the app
+         is installed. -->
+    <bool name="config_permissionReviewRequired">false</bool>
+
+    <!-- Enable NightLight -->
+    <bool name="config_nightDisplayAvailable">true</bool>
+
+    <bool name="config_voice_over_lte_enabled">true</bool>
 
 </resources>

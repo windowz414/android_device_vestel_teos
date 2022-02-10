@@ -22,12 +22,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/vestel/teos/device.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/xos/config/common.mk)
 
 PRODUCT_BRAND := Vestel
 PRODUCT_DEVICE := teos
 PRODUCT_MANUFACTURER := Vestel
-PRODUCT_NAME := aosp_teos
+PRODUCT_NAME := XOS_teos
 PRODUCT_MODEL := Venus V5
 
 PRODUCT_GMS_CLIENTID_BASE := android-vestel
