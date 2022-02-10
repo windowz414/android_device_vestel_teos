@@ -386,6 +386,4 @@
     <!-- Enable NightLight -->
     <bool name="config_nightDisplayAvailable">true</bool>
 
-    <bool name="config_voice_over_lte_enabled">true</bool>
-
 </resources>
