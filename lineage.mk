@@ -24,16 +24,9 @@ $(call inherit-product, device/vestel/teos/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# vendor/e stuff
-$(call inherit-product, vendor/e/config/common.mk)
-
-WITH_FDROID := true
-FDROID_EXTRA_REPOS := true
-PRODUCT_PACKAGES += \
-    F-Droid \
-    FDroidPrivilegedExtension \
-    additional_repos.xml \
-    AuroraStore
+# Custom configurations, ExtendROM and /e/Replacements
+$(call inherit-product, device/vestel/teos/extendrom.mk)
+$(call inherit-product, device/vestel/teos/e-replacements.mk)
 
 PRODUCT_BRAND := Vestel
 PRODUCT_DEVICE := teos

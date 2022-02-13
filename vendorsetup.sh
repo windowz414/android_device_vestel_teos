@@ -28,3 +28,6 @@ export EOS_WITH_SU=true
 
 # Set key subject for signed builds. Beru is the maintainer. :>
 EOS_KEYS_SUBJECT='/C=TR/ST=Turkey/L=Samsun/O=Beru Shinsetsu/OU=Beru Shinsetsu/CN=Beru Shinsetsu/emailAddress=windowz414@1337.lgbt'
+
+########### extendrom section ###########
+$PWD/vendor/extendrom/get_prebuilts.sh
