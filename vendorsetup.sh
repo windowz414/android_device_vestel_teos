@@ -27,7 +27,9 @@ export EOS_BRANCH_NAME=v1-nougat
 export EOS_WITH_SU=true
 
 # Set key subject for signed builds. Beru is the maintainer. :>
-EOS_KEYS_SUBJECT='/C=TR/ST=Turkey/L=Samsun/O=Beru Shinsetsu/OU=Beru Shinsetsu/CN=Beru Shinsetsu/emailAddress=windowz414@1337.lgbt'
+export EOS_KEYS_SUBJECT='/C=TR/ST=Turkey/L=Samsun/O=Beru Shinsetsu/OU=Beru Shinsetsu/CN=Beru Shinsetsu/emailAddress=windowz414@1337.lgbt'
 
 ########### extendrom section ###########
+export ENABLE_EXTENDROM=true
+export EXTENDROM_PACKAGES="additional_repos.xml noEOSappstore com.android.vending.xml phonesky-permissions.xml MicroGmsCore F-Droid F-DroidPriviledgedExtension AuroraStore"
 $PWD/vendor/extendrom/get_prebuilts.sh
