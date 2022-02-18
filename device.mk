@@ -26,11 +26,15 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
+## Using bootanimation.tar
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-# Set this for ROMs requiring it
+## Majority using bootanimation.zip
 TARGET_BOOT_ANIMATION_RES := 720
+
+## Evervolv
+BOOT_ANIMATION_SIZE := 720p
 
 # Permissions
 PRODUCT_COPY_FILES += \
