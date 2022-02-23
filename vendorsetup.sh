@@ -31,5 +31,5 @@ export EOS_KEYS_SUBJECT='/C=TR/ST=Turkey/L=Samsun/O=Beru Shinsetsu/OU=Beru Shins
 
 ########### extendrom section ###########
 export ENABLE_EXTENDROM=true
-export EXTENDROM_PACKAGES="additional_repos.xml noEOSappstore com.android.vending.xml phonesky-permissions.xml F-Droid F-DroidPriviledgedExtension Phonesky MicrogGmsCore Lawnchair-stable"
+export EXTENDROM_PACKAGES="additional_repos.xml noEOSappstore com.android.vending.xml phonesky-permissions.xml F-Droid F-DroidPriviledgedExtension Phonesky MicrogGmsCore Lawnchair-stable K9-Mail-latest Fennec QKSMS Etar AuroraStore"
 $PWD/vendor/extendrom/get_prebuilts.sh
