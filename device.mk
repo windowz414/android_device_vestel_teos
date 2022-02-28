@@ -126,6 +126,15 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     Snap
 
+# Charger Resource Images (Teos)
+WITH_CM_CHARGER := false
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images \
+    libhealthd.qcom \
+    healthd \
+    teos_charger_res_images
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8937 \
