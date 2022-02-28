@@ -1525,6 +1525,10 @@ bin/fmconfig
 bin/fmfactorytest
 bin/fmfactorytestserver
 bin/ftmdaemon
+lib/libfm-hci.so
+lib/fm_helium.so
+lib64/libfm-hci.so
+lib64/fm_helium.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8937.so
