@@ -18,6 +18,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, vendor/vestel/teos/teos-vendor.mk)
 
+# Extra properties that weren't placed in system.prop by Vestel
+$(call inherit-product, $(LOCAL_PATH)/extraprops.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
