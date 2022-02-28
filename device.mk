@@ -18,6 +18,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, vendor/vestel/teos/teos-vendor.mk)
 
+# Extra properties that weren't placed in system.prop by Vestel
+$(call inherit-product, $(LOCAL_PATH)/extraprops.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -126,6 +129,15 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     Snap
 
+# Charger Resource Images (Teos)
+WITH_CM_CHARGER := false
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images \
+    libhealthd.qcom \
+    healthd \
+    teos_charger_res_images
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8937 \
@@ -143,8 +155,9 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+    FM2 \
+    libfmjni \
+    qcom.fmradio
 
 # Fs_config
 PRODUCT_PACKAGES += \
