@@ -12,7 +12,7 @@ endef
 
 _img_modules :=
 _images :=
-$(foreach _img, $(call find-subdir-subdir-files, "images/charger", "*.png"), \
+$(foreach _img, $(call find-subdir-subdir-files, "charger/images/charger", "*.png"), \
   $(eval $(call _add-charger-image,$(_img))))
 
 include $(CLEAR_VARS)

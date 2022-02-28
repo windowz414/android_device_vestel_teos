@@ -1,6 +1,6 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/lineage.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/bliss.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_teos-user \
-    lineage_teos-userdebug \
-    lineage_teos-eng
+    bliss_teos-user \
+    bliss_teos-userdebug \
+    bliss_teos-eng
