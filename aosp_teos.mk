@@ -18,6 +18,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Set shipping API level here as not all ROMs have the relevant mk in
+# their build system.
+PRODUCT_SHIPPING_API_LEVEL := 25
+
 # Inherit from teos device
 $(call inherit-product, device/vestel/teos/device.mk)
 
@@ -35,4 +39,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-vestel
 TARGET_VENDOR_PRODUCT_NAME := Teos
 PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="Teos-user 7.1.2 VTE1190 131806 release-keys"
 
-BUILD_FINGERPRINT := Teos:7.1.2/VTE1190/131806:user/release-keys
+BUILD_THUMBPRINT := 7.1.2/VTE1190/131806:user/release-keys
+BUILD_FINGERPRINT := Vestel/Teos/Teos/Teos_msm8920:$(BUILD_THUMBPRINT)
