@@ -143,8 +143,9 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+    FM2 \
+    libfmjni \
+    qcom.fmradio
 
 # Fs_config
 PRODUCT_PACKAGES += \
