@@ -40,6 +40,7 @@ flac.sw.decoder.24bit.support=true
 
 # Bluetooth
 bluetooth.hfp.client=1
+qcom.bluetooth.soc=smd
 
 # Camera
 camera.display.umax=1920x1080
@@ -165,6 +166,10 @@ persist.dbg.wfc_avail_ovr=1
 persist.radio.sw_mbn_update=0
 persist.radio.hw_mbn_update=0
 telephony.lteOnCdmaDevice=1
+persist.radio.trigger.silence=true
+persist.device.type=omt
+persist.radio.trigger.supportux=true
+service.qti.ims.enabled=1
 
 # Storage
 persist.fuse_sdcard=true
