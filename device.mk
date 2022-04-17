@@ -39,6 +39,9 @@ TARGET_BOOT_ANIMATION_RES := 720
 ## Evervolv
 BOOT_ANIMATION_SIZE := 720p
 
+# AICP expects us to include bootanim makefile ourselves too
+-include vendor/aicp/configs/bootanimation.mk
+
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
