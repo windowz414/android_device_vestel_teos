@@ -37,3 +37,25 @@ then
     fi
 fi
 ####################
+
+##### NitrogenOS #####
+
+# Add lunch combo for Nitrogen
+if [[ -d vendor/nitrogen ]]
+then
+    # Do bringup for nitro so we can add lunch combo properly
+    echo "" && echo "Bringing up the device tree..." && echo ""
+    if [[ ! -z $(which rename) ]]; then
+        rename 's/aosp/nitrogen/g' device/vestel/teos/aosp_teos.mk
+    else
+        echo "You don't have 'rename' installed. Falling back to move..." && echo ""
+        pushd device/vestel/teos
+        mv {aosp,nitrogen}_teos.mk
+        popd
+        echo ""
+    fi
+    sed -i 's/aosp/nitrogen/g' device/vestel/teos/{AndroidProducts,nitrogen_teos}.mk
+    sed -i 's/POLICY := 1/POLICY := 0/' device/vestel/teos/BoardConfig.mk
+    add_lunch_combo nitrogen_teos-userdebug
+fi
+######################
