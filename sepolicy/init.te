@@ -1,0 +1,3 @@
+allow init persist_file:filesystem { associate getattr mount  relabelto relabelfrom };
+allow init vfactory_file:dir { mounton };
+allow persist_file persist_file:filesystem associate;

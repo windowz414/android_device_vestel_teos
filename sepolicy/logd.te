@@ -1,0 +1,7 @@
+type cache_bootlog_file, file_type;
+
+allow logd self:capability dac_override;
+
+# bootlog service; used to log boot messages but wont be executed in production
+dontaudit logd cache_file:file create_file_perms;
+dontaudit logd cache_file:dir create_dir_perms;

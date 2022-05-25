@@ -1,0 +1,4 @@
+# QTI Init Shell sets this prop according to the value in /vfactory
+# and uses that property to write to sysfs
+ro.serialno            u:object_r:serialno_prop:s0
+

@@ -1,0 +1,3 @@
+allow wcnss_service self:capability { chown setgid setuid };
+allow wcnss_service wcnss_file:file r_file_perms;
+allow wcnss_service { shell_exec toolbox_exec }:file rx_file_perms;

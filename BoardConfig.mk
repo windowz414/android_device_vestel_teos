@@ -199,6 +199,7 @@ USE_SENSOR_MULTI_HAL := true
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true

@@ -22,3 +22,12 @@
 
 # Data files
 /data/misc/netmgr/log\.txt			u:object_r:netmgrd_data_file:s0
+
+# /vfactory directory
+/vfactory(/.*)?         u:object_r:vfactory_file:s0
+
+# WCNSS qcom file
+/vfactory/WCNSS_qcom_cfg.ini            u:object_r:wcnss_file:s0
+
+# Bluetooth
+/vfactory/bluetooth(/.*)?           u:object_r:bluetooth_file:s0
