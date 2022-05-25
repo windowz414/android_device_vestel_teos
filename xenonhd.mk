@@ -26,12 +26,12 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 $(call inherit-product, device/vestel/teos/device.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
 
 PRODUCT_BRAND := Vestel
 PRODUCT_DEVICE := teos
 PRODUCT_MANUFACTURER := Vestel
-PRODUCT_NAME := lineage_teos
+PRODUCT_NAME := xenonhd_teos
 PRODUCT_MODEL := Venus V5
 
 PRODUCT_GMS_CLIENTID_BASE := android-vestel
