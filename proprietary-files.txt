@@ -110,7 +110,6 @@ etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 
 # CNE
--priv-app/CNEService/CNEService.apk
 bin/cnd
 etc/cne/SwimConfig.xml
 etc/cne/andsfCne.xml
@@ -132,9 +131,6 @@ etc/cne/wqeclient/VZW/VZW_profile6.xml
 etc/permissions/ConnectivityExt.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
-framework/ConnectivityExt.jar
-framework/cneapiclient.jar
-framework/com.quicinc.cne.jar
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneqmiutils.so
@@ -1473,9 +1469,6 @@ etc/dpm/dpm.conf
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/dpmapi.xml
-framework/com.qti.dpmframework.jar
-framework/dpmapi.jar
-framework/tcmclient.jar
 vendor/bin/qseeproxysampledaemon
 vendor/lib/libdpmctmgr.so
 vendor/lib/libdpmfdmgr.so
@@ -1534,8 +1527,6 @@ lib64/fm_helium.so
 vendor/lib/hw/gatekeeper.msm8937.so
 
 # GPS
--framework/com.qti.location.sdk.jar
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/DR_AP_Service
 bin/diag_callback_sample
 bin/garden_app
@@ -1551,8 +1542,6 @@ etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
 etc/xtra_root_cert.pem
-framework/com.qualcomm.location.vzw_library.jar
-framework/izat.xt.srv.jar
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
 lib64/libloc_api_v02.so
@@ -1907,7 +1896,6 @@ vendor/lib/libwms.so
 vendor/lib64/libwms.so
 
 # Network
--priv-app/QtiTetherService/QtiTetherService.apk
 vendor/lib/libconnctrl.so
 vendor/lib/libQtiTether.so
 vendor/lib64/libconnctrl.so
@@ -1943,7 +1931,6 @@ etc/permissions/rcs_service_aidl.xml
 etc/permissions/rcs_service_api.xml
 
 # Postprocessing
-framework/com.qti.snapdragon.sdk.display.jar
 vendor/bin/mm-pp-dpps
 vendor/lib/libdisp-aba.so
 vendor/lib64/libdisp-aba.so
@@ -1997,11 +1984,6 @@ vendor/lib64/libquipc_os_api.so
 vendor/lib64/libsmemlog.so
 
 # Radio
--app/QtiTelephonyService/QtiTelephonyService.apk
--app/datastatusnotification/datastatusnotification.apk
--app/embms/embms.apk
--app/fastdormancy/fastdormancy.apk
--app/shutdownlistener/shutdownlistener.apk
 bin/ATFWD-daemon
 bin/diag_dci_sample
 bin/diag_klog
@@ -2025,13 +2007,8 @@ etc/data/netmgr_config.xml
 etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
-framework/QtiTelephonyServicelibrary.jar
-framework/embmslibrary.jar
--framework/qcrilhook.jar
-framework/qti-telephony-common.jar
 lib/libantradio.so
 lib64/libantradio.so
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
@@ -2054,10 +2031,6 @@ bin/imscmservice
 bin/imsdatadaemon
 bin/imsqmidaemon
 etc/permissions/imscm.xml
-framework/imscmlibrary.jar
-framework/rcsimssettings.jar
--vendor/app/ims/ims.apk
--vendor/app/imssettings/imssettings.apk
 vendor/lib/lib-ims-rcscmjni.so
 vendor/lib/lib-imsSDP.so
 vendor/lib/lib-imscamera.so
@@ -2131,7 +2104,6 @@ vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
 # Time services
--app/TimeService/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
@@ -2173,9 +2145,6 @@ bin/setup_fs
 bin/sns_dsps_tc0001
 bin/subsystem_ramdump
 bin/test_module_pproc
--vendor/app/SVIService/SVIService.apk
--vendor/app/CABLService/CABLService.apk
--vendor/app/RIDLClient/RIDLClient.apk
 vendor/bin/chamomile_provision
 vendor/bin/LKCore
 vendor/lib/hw/activity_recognition.msm8937.so
