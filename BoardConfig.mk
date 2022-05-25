@@ -200,6 +200,9 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
+# Halium/UT thingy - TTY
+BOARD_KERNEL_CMDLINE += console=tty0
+
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
