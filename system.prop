@@ -40,7 +40,6 @@ flac.sw.decoder.24bit.support=true
 
 # Bluetooth
 bluetooth.hfp.client=1
-qcom.bluetooth.soc=smd
 
 # Camera
 camera.display.umax=1920x1080
@@ -132,6 +131,9 @@ vidc.enc.narrow.searchrange=1
 vidc.disable.split.mode=1
 video.disable.ubwc=1
 
+# Net Manager Daemon
+ro.use_data_netmgrd=true
+
 # OTA MBN update
 persist.radio.start_ota_daemon=1
 
@@ -151,8 +153,6 @@ ro.telephony.default_network=9
 persist.radio.multisim.config=
 persist.radio.sib16_support=1
 persist.radio.custom_ecc=1
-persist.radio.calls.on.ims=0
-persist.radio.jbims=0
 persist.radio.csvt.enabled=false
 persist.radio.rat_on=combine
 persist.radio.mt_sms_ack=20
@@ -163,13 +163,7 @@ persist.dbg.ims_volte_enable=1
 persist.radio.videopause.mode=1
 persist.data.iwlan.enable=true
 persist.dbg.wfc_avail_ovr=1
-persist.radio.sw_mbn_update=0
-persist.radio.hw_mbn_update=0
 telephony.lteOnCdmaDevice=1
-persist.radio.trigger.silence=true
-persist.device.type=omt
-persist.radio.trigger.supportux=true
-service.qti.ims.enabled=1
 
 # Storage
 persist.fuse_sdcard=true
@@ -183,6 +177,8 @@ persist.mm.sta.enable=0
 
 # Time Services
 persist.timed.enable=true
+persist.data.mode=concurrent
+persist.data.netmgrd.qos.enable=true
 
 # Trim properties
 ro.sys.fw.use_trim_settings=true
