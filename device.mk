@@ -320,5 +320,4 @@ PRODUCT_COPY_FILES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    sensor_testing_service.sh \
     qca6234-service.sh

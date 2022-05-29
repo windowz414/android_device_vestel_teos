@@ -2156,7 +2156,6 @@ bin/vendor_cmd_tool
 bin/wcnss_service
 bin/wdsdaemon
 bin/wfdservice
-bin/wlan-test.sh
 bin/WifiLogger_app
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml

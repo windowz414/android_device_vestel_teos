@@ -367,14 +367,3 @@ service update_bt_mac /system/bin/sh -c "btnvtool -b `cat /vfactory/bt_mac`"
 
 on property:init.svc.config_bt_addr=stopped
    start update_bt_mac
-
-service wlan_ftm /system/bin/wlan-test.sh
-    class late_start
-    user root
-    group shell
-    disabled
-    oneshot
-    seclabel u:r:wlantest:s0
-
-on property:vestel.start.wlantest=1
-    start wlan_ftm
