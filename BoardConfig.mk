@@ -196,7 +196,6 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 USE_SENSOR_MULTI_HAL := true
 
 # SELinux
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
