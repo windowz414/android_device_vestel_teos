@@ -1,0 +1,12 @@
+[
+  {
+    "repository": "liquidprjkt/android_kernel_vestel_msm8920",
+    "target_path": "kernel/vestel/msm8920",
+    "branch": "cm-14.1"
+  },
+  {
+    "repository": "windowz414/android_vendor_vestel_teos",
+    "target_path": "vendor/vestel/teos",
+    "branch": "cm-14.1"
+  }
+]

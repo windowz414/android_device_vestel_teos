@@ -25,19 +25,27 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 # Inherit from teos device
 $(call inherit-product, device/vestel/teos/device.mk)
 
-# Inherit some common LineageOS stuff.
+# Inherit some common XenonHD stuff.
 $(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
 
 PRODUCT_BRAND := Vestel
 PRODUCT_DEVICE := teos
-PRODUCT_MANUFACTURER := Vestel
 PRODUCT_NAME := xenonhd_teos
+PRODUCT_MANUFACTURER := Vestel
 PRODUCT_MODEL := Venus V5
 
 PRODUCT_GMS_CLIENTID_BASE := android-vestel
 
 TARGET_VENDOR_PRODUCT_NAME := Teos
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="Teos-user 7.1.2 VTE1190 131806 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=Teos \
+    PRODUCT_DEVICE=Teos \
+    PRIVATE_BUILD_DESC="Teos-user 7.1.2 VTE1190 131806 release-keys" \
+    BUILD_FINGERPRINT=Vestel/Teos/Teos:7.1.2/VTE1190/131806:user/release-keys
 
-BUILD_THUMBPRINT := 7.1.2/VTE1190/131806:user/release-keys
-BUILD_FINGERPRINT := Vestel/Teos/Teos:$(BUILD_THUMBPRINT)
+# More Xenon stuff
+PRODUCT_PROPERTY_OVERRIDES += ro.xenonhd.maintainer="Beru S. Hinode (windowz414) & Nick (nift4) x AkumaHunt3r & Bruno Lange (brvn0)"
+PRODUCT_PACKAGES += \
+    AdAway \
+    KernelAdiutor \
+    Snap

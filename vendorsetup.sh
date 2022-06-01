@@ -14,5 +14,7 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/xenonhd.mk
+for i in user userdebug eng
+do
+    add_lunch_combo xenonhd_teos-$i
+done
